@@ -894,7 +894,7 @@
     }
     .mobile-drawer-title{
       font-family:"Playfair Display", Georgia, serif;
-      font-size:1.25rem;
+      font-size:1.2rem;
       font-weight:600;
       color:var(--plum);
     }
@@ -1046,7 +1046,50 @@
       #specialties .specialties-approach{padding-top:8px;}
       #specialties .approach-list{grid-template-columns:1fr;}
     }
-  </style>
+  
+    /* Consistent body text sizing: service cards, insurance, FAQ */
+    .card p,
+    .insurance-panel p,
+    .insurance-list,
+    .insurance-list li,
+    .insurance-questions,
+    .insurance-questions li,
+    .faq p,
+    .faq summary {
+      font-size:1.2rem;
+    }
+
+/* Keep enlarged body text regular-weight */
+.card p,
+.insurance-panel p,
+.insurance-list,
+.insurance-list li,
+.insurance-questions,
+.insurance-questions li,
+.faq p,
+.faq summary {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+
+    /* Match FAQ introduction to Insurance & Payment introduction */
+    .faq .section-intro .lead{
+      font-size:clamp(1.1rem,2vw,1.35rem);
+      max-width:760px;
+      color:#50675f;
+      font-weight:400;
+    }
+
+    /* Insurance coverage guidance text */
+    .insurance-questions-intro, .insurance-panel .insurance-questions-intro {
+      font-size:1.2rem;
+      font-weight:400;
+    }
+
+/* Keep session fee text regular weight */
+.insurance-fee, .insurance-fee strong, .insurance-fee b { font-weight: 400 !important; }
+</style>
 
   <script type="application/ld+json">
   {
@@ -1319,7 +1362,7 @@
         <div class="insurance-grid">
           <div class="insurance-panel">
             <h3>Rates</h3>
-            <p><strong>60-minute psychotherapy session: $200</p>
+            <p>60-minute psychotherapy session: $200</p>
 
             <h3 style="margin-top:2rem">Insurance</h3>
             <p>I currently accept:</p>
@@ -1333,7 +1376,7 @@
 
           <div>
             <h3>Questions to ask your insurance provider</h3>
-            <p>Because coverage varies by plan, please check your benefits carefully. You may want to ask:</p>
+            <p class="insurance-questions-intro">Because coverage varies by plan, please check your benefits carefully. You may want to ask:</p>
             <ul class="insurance-questions">
               <li>Do I have mental health insurance benefits?</li>
               <li>What is my deductible, and has it been met?</li>
@@ -1458,4 +1501,12 @@
 #specialties .approach-item{font-size:1.12rem;line-height:1.55;}
 #specialties .approach-item strong{font-size:1.12rem;}
 #specialties .approach-item .small{font-size:1.02rem;}
+
+    /* Unified body-text sizing for service cards, insurance, and FAQ */
+    .card p,
+    .insurance-panel p,
+    .faq p,
+    .faq summary {
+      font-size:1.2rem;
+    }
 </style>

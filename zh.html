@@ -69,7 +69,7 @@
     }
     h1{font-size:clamp(2rem,3.2vw,5.8rem);max-width:900px}
     h2{font-size:clamp(2rem,4vw,3.5rem)}
-    h3{font-size:2rem}
+    h3{font-size:1.55rem}
     p{margin:.3rem 0 1.1rem}
     .lead{font-size:clamp(1.1rem,2vw,1.35rem);max-width:760px;color:#39565c}
     .small{font-size:.9rem;color:var(--muted)}
@@ -886,7 +886,7 @@
     }
     .mobile-drawer-title{
       font-family:"Playfair Display", Georgia, serif;
-      font-size:1.25rem;
+      font-size:1.2rem;
       font-weight:600;
       color:var(--plum);
     }
@@ -1038,7 +1038,50 @@
       #specialties .specialties-approach{padding-top:8px;}
       #specialties .approach-list{grid-template-columns:1fr;}
     }
-  </style>
+  
+    /* Consistent body text sizing: service cards, insurance, FAQ */
+    .card p,
+    .insurance-panel p,
+    .insurance-list,
+    .insurance-list li,
+    .insurance-questions,
+    .insurance-questions li,
+    .faq p,
+    .faq summary {
+      font-size:1.2rem;
+    }
+
+/* Keep enlarged body text regular-weight */
+.card p,
+.insurance-panel p,
+.insurance-list,
+.insurance-list li,
+.insurance-questions,
+.insurance-questions li,
+.faq p,
+.faq summary {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+
+    /* Match FAQ introduction to Insurance & Payment introduction */
+    .faq .section-intro .lead{
+      font-size:clamp(1.1rem,2vw,1.35rem);
+      max-width:760px;
+      color:#50675f;
+      font-weight:400;
+    }
+
+    /* Insurance coverage guidance text */
+    .insurance-questions-intro, .insurance-panel .insurance-questions-intro {
+      font-size:1.2rem;
+      font-weight:400;
+    }
+
+/* Keep session fee text regular weight */
+.insurance-fee, .insurance-fee strong, .insurance-fee b { font-weight: 400 !important; }
+</style>
 
   <script type="application/ld+json">
   {
@@ -1226,7 +1269,7 @@
         <div class="about-credentials" aria-label="教育背景 and 执照">
           <div class="credential-item">
             <h3>教育背景</h3>
-            <p>&bull; The Pennsylvania State University - <br>Doctor of Philosophy (PhD) in Psychology</p>
+            <p>&bull; The Pennsylvania State University - <br> Doctor of Philosophy (PhD) in Psychology</p>
           </div>
           <div class="credential-item">
             <h3>执照</h3>
@@ -1311,7 +1354,7 @@
         <div class="insurance-grid">
           <div class="insurance-panel">
             <h3>费用</h3>
-            <p><strong>60分钟心理治疗：$200</p>
+            <p>60分钟心理治疗：$200</p>
 
             <h3 style="margin-top:2rem">保险</h3>
             <p>目前接受以下保险：</p>
@@ -1325,7 +1368,7 @@
 
           <div>
             <h3>可向保险公司咨询的问题</h3>
-            <p>不同保险计划的保障范围可能不同，建议仔细确认你的具体福利。你可以询问：</p>
+            <p class="insurance-questions-intro">不同保险计划的保障范围可能不同，建议仔细确认你的具体福利。你可以询问：</p>
             <ul class="insurance-questions">
               <li>我的保险是否包含心理健康服务？</li>
               <li>我的免赔额是多少？目前是否已经达到？</li>
@@ -1450,4 +1493,12 @@
 #specialties .approach-item{font-size:1.12rem;line-height:1.55;}
 #specialties .approach-item strong{font-size:1.12rem;}
 #specialties .approach-item .small{font-size:1.02rem;}
+
+    /* Unified body-text sizing for service cards, insurance, and FAQ */
+    .card p,
+    .insurance-panel p,
+    .faq p,
+    .faq summary {
+      font-size:1.2rem;
+    }
 </style>
