@@ -809,8 +809,129 @@
     .language-switch a{padding:.42rem .62rem;border:1px solid var(--line);border-radius:4px;font-size:.78rem;font-weight:700}
     .language-switch a[aria-current="page"]{background:var(--plum);color:white;border-color:var(--plum)}
 
+
+
+    /* Mobile navigation drawer */
+    .mobile-menu-button{
+      display:none;
+      width:44px;
+      height:44px;
+      align-items:center;
+      justify-content:center;
+      border:1px solid var(--line);
+      border-radius:6px;
+      background:#fff;
+      color:var(--plum);
+      cursor:pointer;
+      padding:0;
+      flex:0 0 auto;
+    }
+    .mobile-menu-button span,
+    .mobile-menu-button span::before,
+    .mobile-menu-button span::after{
+      display:block;
+      width:20px;
+      height:2px;
+      background:currentColor;
+      position:relative;
+      transition:transform .2s ease, opacity .2s ease;
+    }
+    .mobile-menu-button span::before,
+    .mobile-menu-button span::after{
+      content:"";
+      position:absolute;
+      left:0;
+    }
+    .mobile-menu-button span::before{top:-6px}
+    .mobile-menu-button span::after{top:6px}
+    .mobile-menu-button[aria-expanded="true"] span{background:transparent}
+    .mobile-menu-button[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
+    .mobile-menu-button[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
+
+    .mobile-menu-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(20,45,38,.28);
+      opacity:0;
+      visibility:hidden;
+      transition:opacity .22s ease, visibility .22s ease;
+      z-index:39;
+    }
+    .mobile-menu-overlay.is-open{opacity:1;visibility:visible}
+
+    .mobile-drawer{
+      position:fixed;
+      top:0;
+      right:0;
+      width:min(86vw,340px);
+      height:100dvh;
+      background:#fbfefc;
+      box-shadow:-18px 0 45px rgba(49,95,80,.16);
+      transform:translateX(100%);
+      transition:transform .24s ease;
+      z-index:40;
+      padding:24px 24px 32px;
+      display:flex;
+      flex-direction:column;
+      overflow-y:auto;
+    }
+    .mobile-drawer.is-open{transform:translateX(0)}
+    .mobile-drawer-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding-bottom:16px;
+      border-bottom:1px solid var(--line);
+    }
+    .mobile-drawer-title{
+      font-family:"Playfair Display", Georgia, serif;
+      font-size:1.25rem;
+      font-weight:600;
+      color:var(--plum);
+    }
+    .mobile-drawer-close{
+      width:40px;
+      height:40px;
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:6px;
+      color:var(--plum);
+      font-size:1.6rem;
+      line-height:1;
+      cursor:pointer;
+    }
+    .mobile-drawer-nav{
+      display:flex;
+      flex-direction:column;
+      gap:0;
+      padding-top:14px;
+    }
+    .mobile-drawer-nav > a{
+      text-decoration:none;
+      color:#355248;
+      font-weight:650;
+      font-size:1.05rem;
+      padding:14px 4px;
+      border-bottom:1px solid var(--line);
+    }
+    .mobile-drawer-nav > a:hover{color:var(--rose)}
+    .mobile-drawer .language-switch{
+      margin:20px 0 0;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .mobile-drawer .mobile-contact{
+      margin-top:22px;
+      width:100%;
+    }
+    body.mobile-menu-open{overflow:hidden}
+
+
     @media(max-width:900px){
       .navlinks{display:none}
+      .mobile-menu-button{display:inline-flex}
       .hero-grid,.split,.contact-box,.blog-card,.insurance-grid,.services-visual{grid-template-columns:1fr}
       .about-visual{padding-right:0}
       .about-visual::after{display:none}
@@ -1047,8 +1168,26 @@
         <span class="language-switch" aria-label="Language"><a href="index.html" lang="en">English</a><a href="zh.html" lang="zh-Hans" aria-current="page">中文</a></span>
         <a href="#contact" class="button">联系我</a>
       </nav>
+      <button class="mobile-menu-button" type="button" aria-label="打开导航菜单" aria-controls="mobile-navigation" aria-expanded="false"><span aria-hidden="true"></span></button>
     </div>
   </header>
+
+  <div class="mobile-menu-overlay" aria-hidden="true"></div>
+  <aside class="mobile-drawer" id="mobile-navigation" aria-label="手机导航菜单" aria-hidden="true">
+    <div class="mobile-drawer-head">
+      <div class="mobile-drawer-title">菜单</div>
+      <button class="mobile-drawer-close" type="button" aria-label="关闭导航菜单">×</button>
+    </div>
+    <nav class="mobile-drawer-nav" aria-label="手机导航链接">
+      <a href="#about">关于我</a>
+      <a href="#services">心理治疗</a>
+      <a href="#specialties">常见问题</a>
+      <a href="#insurance">保险与费用</a>
+      <a href="#faq">常见问答</a>
+      <span class="language-switch" aria-label="Language"><a href="index.html" lang="en">English</a><a href="zh.html" lang="zh-Hans" aria-current="page">中文</a></span>
+      <a href="#contact" class="button mobile-contact">联系我</a>
+    </nav>
+  </aside>
 
   <main>
     <section class="hero" id="home">
@@ -1172,7 +1311,7 @@
         <div class="insurance-grid">
           <div class="insurance-panel">
             <h3>费用</h3>
-            <p>60分钟心理治疗：$200</p>
+            <p><strong>60分钟心理治疗：$200</p>
 
             <h3 style="margin-top:2rem">保险</h3>
             <p>目前接受以下保险：</p>
@@ -1267,6 +1406,42 @@
       <span>执业心理学家 · 爱达荷州线上心理治疗</span>
     </div>
   </footer>
+
+  <script>
+    (function(){
+      const button = document.querySelector('.mobile-menu-button');
+      const drawer = document.querySelector('.mobile-drawer');
+      const overlay = document.querySelector('.mobile-menu-overlay');
+      const closeButton = document.querySelector('.mobile-drawer-close');
+      if (!button || !drawer || !overlay || !closeButton) return;
+
+      function openMenu(){
+        drawer.classList.add('is-open');
+        overlay.classList.add('is-open');
+        button.setAttribute('aria-expanded','true');
+        drawer.setAttribute('aria-hidden','false');
+        document.body.classList.add('mobile-menu-open');
+        closeButton.focus();
+      }
+
+      function closeMenu(){
+        drawer.classList.remove('is-open');
+        overlay.classList.remove('is-open');
+        button.setAttribute('aria-expanded','false');
+        drawer.setAttribute('aria-hidden','true');
+        document.body.classList.remove('mobile-menu-open');
+      }
+
+      button.addEventListener('click', function(){
+        if (drawer.classList.contains('is-open')) closeMenu(); else openMenu();
+      });
+      closeButton.addEventListener('click', closeMenu);
+      overlay.addEventListener('click', closeMenu);
+      drawer.querySelectorAll('a').forEach(function(link){ link.addEventListener('click', closeMenu); });
+      document.addEventListener('keydown', function(event){ if (event.key === 'Escape') closeMenu(); });
+    })();
+  </script>
+
 </body>
 </html>
 <style>
