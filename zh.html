@@ -958,7 +958,7 @@
     }
   
     /* Slightly larger hero headline */
-    .hero h1{font-size:clamp(2.15rem,3.45vw,5.95rem)}
+    .hero h1{font-size:clamp(2rem,4vw,3.5rem)}
 
     /* Hero image balance and About section alignment */
     .hero-photo{
@@ -1092,15 +1092,34 @@
 
     /* Portrait size: explicit final override */
     #about .about-photo{
-      width:300px;
-      max-width:300px;
+      width:330px;
+      max-width:330px;
+      margin-left:-20px;
     }
     #about .about-photo img{
       width:100%;
       height:auto;
     }
 
-</style>
+
+    /* Final About portrait sizing/alignment */
+    #about .about-photo{
+      width:360px;
+      max-width:360px;
+      margin-left:25px;
+    }
+    #about .about-photo img{
+      width:100%;
+      height:auto;
+    }
+    @media(max-width:900px){
+      #about .about-photo{
+        width:min(360px,100%);
+        max-width:100%;
+        margin-left:0;
+      }
+    }
+  </style>
 
   <script type="application/ld+json">
   {
